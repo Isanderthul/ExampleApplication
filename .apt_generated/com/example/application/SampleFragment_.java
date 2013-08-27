@@ -6,6 +6,7 @@
 package com.example.application;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -13,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import com.example.application.R.layout;
 import com.example.application.rest.RestClient_;
+import com.googlecode.androidannotations.api.BackgroundExecutor;
 
 public final class SampleFragment_
     extends SampleFragment
@@ -74,6 +76,24 @@ public final class SampleFragment_
 
     public static SampleFragment_.FragmentBuilder_ builder() {
         return new SampleFragment_.FragmentBuilder_();
+    }
+
+    @Override
+    public void anotherButton() {
+        BackgroundExecutor.execute(new Runnable() {
+
+
+            @Override
+            public void run() {
+                try {
+                    SampleFragment_.super.anotherButton();
+                } catch (RuntimeException e) {
+                    Log.e("SampleFragment_", "A runtime exception was thrown while executing code in a runnable", e);
+                }
+            }
+
+        }
+        );
     }
 
     public static class FragmentBuilder_ {

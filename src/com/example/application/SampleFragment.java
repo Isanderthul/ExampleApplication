@@ -10,6 +10,7 @@ import android.widget.Toast;
 import com.example.application.rest.RestClient;
 import com.example.application.rest.RestClient_;
 import com.googlecode.androidannotations.annotations.AfterViews;
+import com.googlecode.androidannotations.annotations.Background;
 import com.googlecode.androidannotations.annotations.Click;
 import com.googlecode.androidannotations.annotations.EFragment;
 import com.googlecode.androidannotations.annotations.ViewById;
@@ -25,10 +26,11 @@ public class SampleFragment
     @ViewById
     TextView labelText;
     
+    @Background
     @Click(R.id.button1)
     void anotherButton() {
-    	 Toast.makeText(getActivity(), "hi", Toast.LENGTH_SHORT).show();
-    	//restClient.sendMessage("demo", "demo", "0", "hello_world", "0", "hello");
+    	 //Toast.makeText(getActivity(), "hi", Toast.LENGTH_SHORT).show();
+    	 restClient.sendMessage("demo", "demo", "0", "hello_world", "0", "\"HelloAppceptionalWorld\"");
     }
     
     @AfterViews
